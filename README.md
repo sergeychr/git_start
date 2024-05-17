@@ -153,15 +153,16 @@ Git поймет, что вы имели ввиду последний комм�
 «изменён» → «добавлен в список на коммит» → «закоммичен» → «изменён» → 
 и так далее.
 
-Жизнь файла в **Git**
+Жизнь файла в **Git**  
+(Сделано с помощью [Mermaid](https://mermaid.js.org/intro/))
 
 ```mermaid
-graph LR;
-	untracked -- "git add" --> staged(tracked);
-	staged(tracked) -- "git commit" --> tracked;
-	tracked -- "Изменения" --> modified;
-	modified -- "git add" --> staged(tracked);
-	staged(tracked) -- "Изменения" --> modified;
+flowchart LR;
+	A[untracked] -- "git add" --> B[staged + tracked];
+	B[staged + tracked] -- "git commit" --> C[tracked];
+	C[tracked] -- "Изменения" --> D[modified];
+	D[modified] -- "git add" --> B[staged + tracked];
+	B[staged + tracked] -- "Изменения" --> D[modified];
 ```
 
 Как читать - **git status**
